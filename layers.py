@@ -81,6 +81,34 @@ class ReLU(Layer):
             raise RuntimeError('Gradient cache not defined. When training the train argument must be set to true in the forward pass.')
         return dY * (self.cache_in >= 0), []
 
+class BN(Layer):
+    def __init__(self, input_dim, momentum=0.1):
+        '''
+        Represents a Mean-Only Batch Normalization layer Y = X_hat + beta
+            X_hat: X - mu
+                X is an numpy.ndarray with shape (batch_size, input_dim)
+                mu is a mean of mini-batch, X
+            beta: learnable bias
+            Y is an numpy.ndarray with shape (batch_size, input_dim)
+
+        beta is initialized to zero
+        pop_mean is exponential moving average of population
+        momentum for moving average defaults at 0.1
+        '''
+        self.beta = np.zeros((1, input_dim))
+        self.pop_mean = 0.0
+        self.momentum = momentum
+        self.cache_in = None
+
+    def forward(self, X, train=True):
+        if train:
+            self.cache_in = X
+            mean = np.mean(X, axis=0)
+            self.pop_mean = self.pop_mean * (1-self.momentum) + mean * self.momentum
+        else:
+            mean = self.pop_mean
+        return X - mean + self.beta
+
 class Loss(object):
     '''
     Abstract class representing a loss function
