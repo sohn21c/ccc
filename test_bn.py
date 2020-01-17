@@ -3,7 +3,7 @@ from layers import BN
 
 def test_bn_forward():
 	'''
-	This method tests if mean-only batchnorm layer's forward pass is correctly implemented by checking the normalized values are close to zero
+	This method tests if mean-only batchnorm layer's forward pass is correctly implemented by checking the normalized values being close to zero
 	'''
 	np.random.seed(32)
 
@@ -40,7 +40,7 @@ def test_bn_backward():
 # helper function
 def get_gradient(fx, x, dy, e=1e-4):
 	'''
-	returns a numpy array grad with central difference approximation
+	returns a numpy array grad with centered difference approximation
 	'''
 	grad = np.zeros(x.shape)
 	iterator = np.nditer(x, flags=['multi_index'], op_flags=['readwrite'])
