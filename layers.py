@@ -109,6 +109,17 @@ class BN(Layer):
             mean = self.pop_mean
         return X - mean + self.beta
 
+    def backward(self, dY):
+        if self.cache_in is None:
+            raise RuntimeError('Gradient cache not defined. When training the train argument must be set to true in the forward pass.')
+        dbeta = np.sum(dY, axis=0)
+        dx_hat = dY
+        dmu = -np.sum(dx_hat, axis=0)
+        dx1 = dx_hat
+        dx2 = dmu / dY.shape[0] * np.ones(dY.shape)
+        dx = dx1 + dx2
+        return dx, [(self.beta, dbeta)]
+
 class Loss(object):
     '''
     Abstract class representing a loss function
