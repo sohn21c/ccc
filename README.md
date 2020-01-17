@@ -72,32 +72,32 @@ Data loading, training and validation scripts. Running it trains the networks de
 With the mean-only batchnorm implemented, the model converges faster and handles the higher learning well. Shown below are some of the comparsion runs. 
 
 1. learning rate: 1e-3  
-- With BN  
-	at 200 epochs,  
-	Test loss: 0.09773185980449856  
-	Test accuracy: 0.9711  
-- WIthout BN  
-	at 250 epochs,  
-	Test loss: 0.09541730474917517  
-	Test accuracy: 0.9707  
+	- With BN  
+		at 200 epochs,  
+		Test loss: 0.09773185980449856  
+		Test accuracy: 0.9711  
+	- WIthout BN  
+		at 250 epochs,  
+		Test loss: 0.09541730474917517  
+		Test accuracy: 0.9707  
 
 2. learning_rate: 1e-2  
-- With BN  
-	at 100 epochs,  
-	Test loss: 0.0714296053143353  
-	Test accuracy: 0.9779  
-- Without BN  
-	at 150 epochs,  
-	Test loss: 0.0885770614688055  
-	Test accuracy: 0.9783  
+	- With BN  
+		at 100 epochs,  
+		Test loss: 0.0714296053143353  
+		Test accuracy: 0.9779  
+	- Without BN  
+		at 150 epochs,  
+		Test loss: 0.0885770614688055  
+		Test accuracy: 0.9783  
 
 3. learning_rate: 3e-2
-- With BN  
-	Test loss: 0.07842387898326462  
-	Test accuracy: 0.9797  
-- Without BN  
-	Test loss: 0.09090895906187059  
-	Test accuracy: 0.9793  
+	- With BN  
+		Test loss: 0.07842387898326462  
+		Test accuracy: 0.9797  
+	- Without BN  
+		Test loss: 0.09090895906187059  
+		Test accuracy: 0.9793  
 
 
 
