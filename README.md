@@ -18,3 +18,18 @@ Defines Network, a configurable class representing a sequential neural network w
 
 ### main.py
 Data loading, training and validation scripts. Running it trains the networks described in experiments. For loading the data it expects two files "data/mnist_train.csv" and "data/mnist_test.csv". These can be downloaded from https://pjreddie.com/projects/mnist-in-csv/. To run use "python3 main.py".
+
+## Added by James Sohn
+### Task 1
+- Objective  
+	To implement mean-only batch normalization with scaling `x_hat = x - mu` and output `y = x_hat + beta`.  
+- Forward pass  
+	- Code can be found [here](https://github.com/sohn21c/ccc/commit/07e82fceca8db3ced5d43eb63b28a94637c73069)
+	- Forward pass takes the mean of the minibatch and normalize the layer's input as described in objective above with the learanable parameter bias initialized at `0`.  
+	- The code divides the cases into `train` and `test`. During `train`, exponentially weighted average of population is tracked and later used for normalization at `test` time. Knowing that the `train + val + test` data was normalized the same at `loading`(as shown [here](https://github.com/sohn21c/ccc/blob/6e6bdd4243ef99cc962f04d6909d8d9b4956d071/main.py#L56)) and the batch size at `test` time is big enough(`128`, as shown [here](https://github.com/sohn21c/ccc/blob/6e6bdd4243ef99cc962f04d6909d8d9b4956d071/main.py#L31)), it would have worked without the `train`/`test` separation. However, having written the section as such, one can choose to use smaller batch size at `test` time without an issue.  
+	- Momentum for exponentially weighted average is set at `0.1` with the calculation `pop_mean = pop_mean * (1-momentum) + mean * momentum`    
+
+- Backward pass  
+### Task 2
+### Reesult
+### Comment

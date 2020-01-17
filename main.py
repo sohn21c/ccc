@@ -1,6 +1,6 @@
 import numpy as np
 
-from layers import Linear, ReLU, SoftmaxCrossEntropyLoss
+from layers import Linear, ReLU, BN, SoftmaxCrossEntropyLoss
 from network import Network
 
 
@@ -35,7 +35,7 @@ def main():
     print('Test loss:', test_loss)
     print('Test accuracy:', test_acc)
     print('\n')
-    
+
     # Define network without batch norm
     net = Network(learning_rate = 1e-3)
     net.add_layer(Linear(dim, 256))
