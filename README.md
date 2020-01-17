@@ -92,22 +92,22 @@ With the mean-only batchnorm implemented, the model converges faster and handles
 		Test accuracy: 0.9783  
 
 3. learning_rate: 3e-2  
-	- With BN 
+	- With BN  
 		at 75 epochs,  
 		Test loss: 0.07352606911902576  
 		Test accuracy: 0.979   
 	- Without BN  
-		at 100 epochs,
+		at 100 epochs,  
 		Test loss: 0.08451743866894222  
 		Test accuracy: 0.9791  
 
 4. learning_rate: 1e-1  
 	- With BN  
-		at 50 epochs,
+		at 50 epochs,  
 		Test loss: 0.07718941271657326  
 		Test accuracy: 0.9816  
 	- Without BN  
-		at 50 epochs,
+		at 50 epochs,  
 		Test loss: 0.08209482968920581  
 		Test accuracy: 0.9799  
 
